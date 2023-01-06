@@ -24,28 +24,28 @@
         </script>
     <!-- anime.js tag -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <title>About Me</title>
     <nav class="navbar navbar-light bg-white">
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1"></span>
         </div>
     </nav>
     <div class="text-center">
+        <div class="headtitle">About Me</div>
     </div>
-    <h1 style="text-align:center">About Me</h1>
     <br>
     <div class="flexbox-container" style="display:flex;">
         <div class="sidebar" style="flex:1;margin-left: 440px;">
             <img style="height: 550px;" src="Images/Profile1.jpg" alt="image of self">
         </div>
-        <div class="main" style="flex:1; margin-top: 150px; margin-right: 400px">
-            <b>Au Fu Loong</b>
+        <div class="main" style="flex:1; margin-top: 100px; margin-right: 400px">
+            <div class="titleone">Au Fu Loong</div>
             <br>
-            <br>
-            <div class="title">Student</div>
+            <div class="titletwo">Student</div>
             <br>
             <div class="age"></div>
             <br>
@@ -53,6 +53,7 @@
             <div class="description"> My name is Fuloong, and I am currently a year 2 student at
                 Republic Polytechnic in the School of Infocomm, Digital Design and Development(SOI, DDDD).
                 I enjoy learning about coding and design and hope to start learning more on VR in the future. </div>
+            <br>
             <br>
             <div class="controls">
                 <button class="play">Play</button>
@@ -62,38 +63,52 @@
     </div>
     <script>
 
-        // anime({
-        //     targets: '.sidebar',
-        //     translateY: [700, 0],
-        //     rotate: 360,
-        //     easing: 'easeInOutExpo',
-        //     delay: anime.stagger(100, { start: 2000 }),
-        //     // direction: 'alternate
-        // });
+        anime({
+            targets: '.headtitle',
+            translateX: 0,
+            scale: 2,
+            direction: 'alternate',
+            duration: 600,
+            easing: 'easeInOutSine',
+        });
+
+    
+        anime({
+            targets: ".titleone",
+            translateX: [700, 0],
+            easing: 'easeInOutSine',
+            rotate: 360,
+            opacity: [0, 1], //start and end values
+            delay: 900
+        });
+
+        anime({
+            targets: ".titletwo",
+            translateX: [700, 0],
+            easing: 'easeInOutSine',
+            rotate: 360,
+            opacity: [0, 1], //start and end values
+            delay: 1500
+        });
 
         anime({
             targets: '.age',
             innerHTML: [0, 22], //start and end values
-            easing: 'linear',
-            round: 1, //rounds off to zero decimal places 
-            duration: 1500
-        });
-
-        anime({
-            targets: ".title",
+            easing: 'easeInOutSine',
             translateX: [700, 0],
-            rotate: 360,
-            opacity: [0, 1], //start and end values
-            delay: 500
+            round: 1, //rounds off to zero decimal places 
+            duration: 4000
         });
 
         anime({
             targets: ".description",
             scale: [
-                { value: .1, easing: 'easeOutSine', duration: 500 },
-                { value: 1, easing: 'easeInOutQuad', duration: 1200 }
+                { value: .1, easing: 'easeOutSine', duration: 1000 },
+                { value: 1, easing: 'easeInOutQuad', duration: 4200 }
             ],
-            delay: anime.stagger(100, { grid: [1, 1], from: 'center' })
+            delay: anime.stagger(100, { grid: [4, 1], from: 'center' }),
+            easing: 'easeInOutSine',
+            duration: 2400
         });
 
 
@@ -101,12 +116,13 @@
             targets: '.sidebar',
             translateY: [-700, 0],
             rotate: 360,
-            delay: anime.stagger( 100, { start: 1000 }),
+            delay: anime.stagger(100, { start: 1000 }),
             // direction: 'alternate'
             delay: function (el, i) { return i * 100; },
             loop: false,
             autoplay: true,
-            easing: 'easeInOutSine'
+            easing: 'easeInOutSine',
+            duration: 1500
         });
 
         document.querySelector('.play').onclick = animation.play;
